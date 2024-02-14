@@ -34,20 +34,29 @@ module.exports = {
         math: 'always'
       }
     ],
-    "prettier/prettier": [
-      "error",
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 1
+      },
+      "multiline": {
+        "max": 1
+      }
+    }],
+    'prettier/prettier': [
+      'error',
       {
-        arrowSpacing: ["error", { before: true, after: true }],
+        arrowSpacing: ['error', { before: true, after: true }],
         singleQuote: true,
         semi: true,
         useTabs: false,
         tabWidth: 2,
-        trailingComma: "none",
+        trailingComma: 'none',
         printWidth: 80,
         bracketSpacing: true,
-        arrowParens: "always",
-        endOfLine: "auto",
-      },
-    ],
+        arrowParens: 'always',
+        endOfLine: 'auto',
+        singleAttributePerLine: true
+      }
+    ]
   }
 };
