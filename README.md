@@ -1,6 +1,6 @@
 # Nuxt3 학습 프로젝트
 인프런 강의를 토대로 학습을 진행하는 프로젝트이다.  
-README 파일에는 진행하다가 막힌 것을 기록한다.
+README 파일에는 진행하다가 막힌 것을 기록한고, 추가적으로 정리할 것들을 기록한다..
 - 강의: https://www.inflearn.com/course/vue-%EB%81%9D%ED%8C%90%EC%99%95-nuxt3-%EC%99%84%EB%B2%BD%EB%A7%88%EC%8A%A4%ED%84%B0  
 - IDE: WebStorm
 
@@ -23,3 +23,17 @@ vue2의 경우에는 스타일 가이드상 한 줄에 하나씩을 추천했었
 적용을 해도, prettier는 적용이 안 되기에 오히려 오류가 더욱 더 난잡해지는 경우가 발생.  
 다음을 참조하여 prettiert설정의 `singleAttributePerLine`를 `true`로 추가하였다.
 - https://github.com/prettier/eslint-plugin-prettier/issues/94#issuecomment-1732005231
+
+## 추가 정리
+
+### auto import 버그?
+Nuxt3는 `components/`, `pages/`, `composables` 디렉토리에 있는 파일을 자동으로 import 해주는 기능이 있다.  
+그래서 따로 import를 하지 않아도 사용할 수 있다.
+
+그러나, 가끔씩 이 기능이 작동하지 않는 경우가 있다.  
+그럴 때는 파일 탭을 다 닫고, 서버를 끈 후 다시 에디터에서 입력하면 import구문 없이 사용이 되는 걸 확인가능하다.  
+vscode도 그렇고 WebStorm도 그렇고, 이런 버그가 같이 발생하는 건 신기하다.
+
+### Router Link
+프로그래밍 방식으로 이동하나 `RouterLink`로 이동하나 최종적으로 결과는 같다.  
+그러나, `RouterLink`를 사용하면 최종적으로 앵커(`<a>`) 태그로 렌더링이 되기 때문에 SEO 최적화에 유리하다.
