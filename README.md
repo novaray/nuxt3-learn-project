@@ -37,3 +37,19 @@ vscode도 그렇고 WebStorm도 그렇고, 이런 버그가 같이 발생하는 
 ### Router Link
 프로그래밍 방식으로 이동하나 `RouterLink`로 이동하나 최종적으로 결과는 같다.  
 그러나, `RouterLink`를 사용하면 최종적으로 앵커(`<a>`) 태그로 렌더링이 되기 때문에 SEO 최적화에 유리하다.
+
+### RouterView / NuxtPage
+`RouterView`는 Vue Router에서 사용하는 컴포넌트이다.  
+`RouterView`는 `RouterView` 컴포넌트가 렌더링 될 때 한 번만 렌더링 된다.  
+예전에 Vue3 프로젝트를 진행할 때 해당 페이지를 다시 렌더링 해야 한다면, Vue Router에서 제공하는 `replace`를 사용하였다. 
+
+`NuxtPage`는 Nuxt에서 사용하는 컴포넌트이다.  
+**기본적으로** `path`가 변경되면 다시 렌더링이 된다.  
+이러한 기본 사항을 변경하려면 `pageKey`속성에 정적인값을 넣으면 한 번만 렌더링 된다.  
+
+추가로, **기본적으로** `NuxtPage`는 쿼리스트링의 변경에 대해서는 다시 렌더링이 되지 않는다.  
+쿼리스트링에 대해서도 다시 렌더링을 하려면 `pageKey`속성에 동적으로 fullPath를 넣어주면 해결된다.  
+단, `NuxtPage`가 `Suspense`로 페이지를 렌더링하는 방법에 문제가 발생할 수 있으므로 여기서 $route 객체를 사용하면 안 된다.  
+대안으로는 `definePageMeta`을 사용하면 된다.  
+> https://nuxt.com/docs/api/components/nuxt-page#example
+> https://nuxt.com/docs/api/utils/define-page-meta
