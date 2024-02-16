@@ -53,3 +53,10 @@ vscode도 그렇고 WebStorm도 그렇고, 이런 버그가 같이 발생하는 
 대안으로는 `definePageMeta`을 사용하면 된다.  
 > https://nuxt.com/docs/api/components/nuxt-page#example
 > https://nuxt.com/docs/api/utils/define-page-meta
+
+### RouterLink / NuxtLink
+NuxtLink는 RouterLink를 상속받은 컴포넌트이다.  
+NuxtLink는 `prefetch`속성을 기본적으로 `true`로 설정되어 있다.  
+`prefetch`는 해당 페이지에 대한 데이터를 미리 불러오는 기능이다.  
+화면에 보일 때만(viewport 영역에 들어왔을 때만) prefetch를 진행한다.
+

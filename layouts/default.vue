@@ -15,23 +15,37 @@ const pageContainerStyle = computed(() => ({
       class="bg-dark text-white"
     >
       <q-toolbar>
-        <q-toolbar-title>Vue Master Course</q-toolbar-title>
-        <q-btn
-          stretch
-          flat
-          label="Home"
+        <q-toolbar-title>Vue & Nuxt Mastery Course</q-toolbar-title>
+        <NuxtLink
+          v-slot="{ navigate }"
+          custom
           to="/"
-        />
+        >
+          <q-btn
+            stretch
+            flat
+            no-caps
+            label="Home"
+            @click="navigate"
+          />
+        </NuxtLink>
         <q-separator
           dark
           vertical
         />
-        <q-btn
-          stretch
-          flat
-          label="About"
+        <NuxtLink
+          v-slot="{ navigate }"
+          custom
           to="/about"
-        />
+        >
+          <q-btn
+            stretch
+            flat
+            no-caps
+            label="About"
+            @click="navigate"
+          />
+        </NuxtLink>
       </q-toolbar>
     </q-header>
     <q-page-container :style="pageContainerStyle">
