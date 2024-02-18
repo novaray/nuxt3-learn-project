@@ -1,5 +1,6 @@
 <script lang="ts">
 console.log('prefetching-2.vue');
+export default {};
 </script>
 
 <template>
