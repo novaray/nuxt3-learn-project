@@ -12,21 +12,25 @@ const pageContainerStyle = computed(() => ({
   >
     <q-header
       elevated
-      class="bg-dark text-white"
+      class="bg-orange text-white"
     >
       <q-toolbar>
-        <q-toolbar-title>Vue & Nuxt Mastery Course</q-toolbar-title>
+        <q-toolbar-title>Vue & Nuxt Mastery Custom Layout</q-toolbar-title>
+        <q-separator
+          dark
+          vertical
+        />
         <NuxtLink
           v-slot="{ navigate }"
           custom
-          to="/"
+          to="/custom/dashboard"
         >
           <q-btn
             stretch
             flat
+            label="Dashboard"
             no-caps
-            label="Home"
-            @click="navigate"
+            @click="navigate()"
           />
         </NuxtLink>
         <q-separator
@@ -36,14 +40,14 @@ const pageContainerStyle = computed(() => ({
         <NuxtLink
           v-slot="{ navigate }"
           custom
-          to="/about"
+          to="/custom/settings"
         >
           <q-btn
             stretch
             flat
+            label="Settings"
             no-caps
-            label="About"
-            @click="navigate"
+            @click="navigate()"
           />
         </NuxtLink>
         <q-separator
@@ -53,14 +57,14 @@ const pageContainerStyle = computed(() => ({
         <NuxtLink
           v-slot="{ navigate }"
           custom
-          to="/admin"
+          to="/custom"
         >
           <q-btn
             stretch
             flat
+            label="Custom"
             no-caps
-            label="Admin"
-            @click="navigate"
+            @click="navigate()"
           />
         </NuxtLink>
       </q-toolbar>

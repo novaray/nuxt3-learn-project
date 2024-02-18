@@ -54,6 +54,17 @@ vscode도 그렇고 WebStorm도 그렇고, 이런 버그가 같이 발생하는 
 > https://nuxt.com/docs/api/components/nuxt-page#example
 > https://nuxt.com/docs/api/utils/define-page-meta
 
+#### 중첩 라우딩
+Nuxt3에서는 디렉토리 구조에 따라서 중첩 라우팅을 자동으로 생성해준다.
+
+`<NuxtPage>` 내장컴포넌트는 `@/pages/course.vue` 파일이 있고,    
+`baseUrl/course`로 접근한다면 `@/pages/course.vue` 파일이 있으니 해당 파일이 렌더링 된다.
+
+`@/pages/course.vue` 컴포넌트 하위에 `<NuxtPage>` 컴포넌트가 또 정의되어 있다면(중첩되어 있다면),  
+상위 컴포넌트(렌더링된 컴포넌트)와 일치하는 이름의 디렉토리(`course`)를 찾고 그 디렉토리 내에 있는 컴포넌트를 찾아서 `<NuxtPage>` 위치에 렌더링한다.  
+단, `@/pages/course/index.vue` 파일이 있어야 하며 없으면 렌더링을 하지 않는다.
+
+
 ### RouterLink / NuxtLink
 NuxtLink는 RouterLink를 상속받은 컴포넌트이다.  
 NuxtLink는 `prefetch`속성을 기본적으로 `true`로 설정되어 있다.  
