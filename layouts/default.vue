@@ -3,6 +3,15 @@ const pageContainerStyle = computed(() => ({
   maxWidth: '1080px',
   margin: '0 auto'
 }));
+
+const moveYoutube = async () => {
+  await navigateTo('https://www.youtube.com/@gymcoding', {
+    external: true,
+    open: {
+      target: '_blank'
+    }
+  });
+};
 </script>
 
 <template>
@@ -50,6 +59,19 @@ const pageContainerStyle = computed(() => ({
           dark
           vertical
         />
+
+        <q-btn
+          stretch
+          flat
+          no-caps
+          label="Youtube"
+          @click="moveYoutube"
+        />
+        <q-separator
+          dark
+          vertical
+        />
+
         <NuxtLink
           v-slot="{ navigate }"
           custom
