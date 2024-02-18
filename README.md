@@ -64,10 +64,30 @@ Nuxt3에서는 디렉토리 구조에 따라서 중첩 라우팅을 자동으로
 상위 컴포넌트(렌더링된 컴포넌트)와 일치하는 이름의 디렉토리(`course`)를 찾고 그 디렉토리 내에 있는 컴포넌트를 찾아서 `<NuxtPage>` 위치에 렌더링한다.  
 단, `@/pages/course/index.vue` 파일이 있어야 하며 없으면 렌더링을 하지 않는다.
 
-
 ### RouterLink / NuxtLink
 NuxtLink는 RouterLink를 상속받은 컴포넌트이다.  
 NuxtLink는 `prefetch`속성을 기본적으로 `true`로 설정되어 있다.  
 `prefetch`는 해당 페이지에 대한 데이터를 미리 불러오는 기능이다.  
 화면에 보일 때만(viewport 영역에 들어왔을 때만) prefetch를 진행한다.
 
+### NuxtApp
+NuxtApp은 Nuxt 애플리케이션에서 사용되는 특별한 객체다.  
+NuxtApp을 사용하면 `composables`, `components`, `plugins` 등 여러 부분에서 사용되는 런타입 앱 컨택스트(Runtime App Context)에서 접근할 수 있다.  
+런타입 앱 컨택스트 간단하게 설명하면 프로그램이 실행되는 동안의 정보다.
+
+### plugins
+Webstorm 2023.3.4 기준으로 `plugins` 디렉토리에 있는 파일을 자동으로 인식하지 못한다.    
+import는 되지만 타입 추록이 안 되어 계속 빨갛게 표시되는 현상이 발생한다.  
+해당 현상은 `nuxtApp.provide` 및 공식문서에 설명한대로 `types/index.d.ts`을 설정해도 그대로 타입 추론이 안된다.  
+- IDE Settings의 Vue 설정을 automatically 및, Volar로 강제로 설정해도 여전히 안 됨.
+  - 2024.02.18 기준
+- https://nuxt.com/docs/guide/directory-structure/plugins#typing-plugins
+
+### 외부라이브러리 auto-imports 설정
+외부 라이브러리는 Nuxt에서 자동으로 import를 해주지 않는다.  
+따라서, `nuxt.config.ts` 파일에 `imports`객체를 추가하여 설정해주어야 한다.  
+현재는 i18n을 auto-import로 등록해놓았다.
+
+### utils vs composables
+`composables` 함수 같은 경우에는 반응형 상태에 대한 비즈니스 로직이고,  
+`utils` 함수 같은 경우에는 자주 사용하는 함수들을 모아놓은 것이다. 의미적으로 구분을 해주는 것이 좋다.

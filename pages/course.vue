@@ -7,7 +7,9 @@ const { courses } = useCourses();
     <div class="row q-col-gutter-md">
       <div class="col-3">
         <q-card>
-          <q-item-label header>강의 로드맵</q-item-label>
+          <q-item-label header>
+            강의 로드맵{{ $hello(`gymcoding`) }}
+          </q-item-label>
           <q-list
             bordered
             separator

@@ -12,6 +12,22 @@ const moveYoutube = async () => {
     }
   });
 };
+
+interface Language {
+  name: string;
+  code: 'en' | 'ko';
+}
+
+const languages = ref<Language[]>([
+  { name: 'English', code: 'en' },
+  { name: '한국어', code: 'ko' }
+]);
+
+const { locale } = useI18n();
+
+const getSelectedLanguageName = computed(
+  () => languages.value.find((lang) => lang.code === locale.value)?.name
+);
 </script>
 
 <template>
@@ -34,7 +50,7 @@ const moveYoutube = async () => {
             stretch
             flat
             no-caps
-            label="Home"
+            :label="$t('home')"
             @click="navigate"
           />
         </NuxtLink>
@@ -51,7 +67,7 @@ const moveYoutube = async () => {
             stretch
             flat
             no-caps
-            label="About"
+            :label="$t('about')"
             @click="navigate"
           />
         </NuxtLink>
@@ -64,7 +80,7 @@ const moveYoutube = async () => {
           stretch
           flat
           no-caps
-          label="Youtube"
+          :label="$t('youtube')"
           @click="moveYoutube"
         />
         <q-separator
@@ -81,10 +97,38 @@ const moveYoutube = async () => {
             stretch
             flat
             no-caps
-            label="Admin"
+            :label="$t('admin')"
             @click="navigate"
           />
         </NuxtLink>
+        <q-separator
+          dark
+          vertical
+        />
+        <q-btn-dropdown
+          stretch
+          flat
+          no-caps
+          :label="getSelectedLanguageName"
+        >
+          <q-list
+            padding
+            dense
+          >
+            <q-item
+              v-for="{ code, name } in languages"
+              :key="code"
+              v-close-popup
+              clickable
+              :active="$i18n.locale === code"
+              @click="$i18n.locale = code"
+            >
+              <q-item-section>
+                <q-item-label>{{ name }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
       </q-toolbar>
     </q-header>
     <q-page-container :style="pageContainerStyle">
