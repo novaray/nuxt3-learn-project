@@ -12,5 +12,6 @@ export default defineNuxtConfig({
         imports: ['useI18n']
       }
     ]
-  }
+  },
+  ssr: true // default
 });
