@@ -64,6 +64,14 @@ Nuxt3에서는 디렉토리 구조에 따라서 중첩 라우팅을 자동으로
 상위 컴포넌트(렌더링된 컴포넌트)와 일치하는 이름의 디렉토리(`course`)를 찾고 그 디렉토리 내에 있는 컴포넌트를 찾아서 `<NuxtPage>` 위치에 렌더링한다.  
 단, `@/pages/course/index.vue` 파일이 있어야 하며 없으면 렌더링을 하지 않는다.
 
+### definePageMeta
+`definePageMeta`는 Nuxt에서 제공하는 함수로, 페이지의 메타 정보를 정의하는 컴파일러 매크로 함수이다.  
+`definePageMeta`는 컴포넌트 내에서 참조할 수 없도록 컴파일된다. 즉, 실제로 컴파일된 코드는 컴포넌트 밖으로 끌어올려진다.  
+즉, 컴포넌트(또는 컴포넌트에 정의된 값)를 참조할 수 없다.  
+meta에 사용자 정의 키를 등록할 수있지만, 공식 문서에서도 타입을 정의하고 사용하는 걸 권장한다.
+- '/types/pageMeta.d.ts'
+- https://nuxt.com/docs/guide/directory-structure/pages/#typing-custom-metadata
+
 ### RouterLink / NuxtLink
 NuxtLink는 RouterLink를 상속받은 컴포넌트이다.  
 NuxtLink는 `prefetch`속성을 기본적으로 `true`로 설정되어 있다.  
@@ -148,3 +156,8 @@ Vue에서 hydration 불일치가 발생하면 클라이언트 측 상태와 일�
 ### useError (composable function) / clearError
 `useError`는 Nuxt에서 제공하는 함수로, 전역 에러 객체를 반환하는 컴포저블 함수다.  
 `clearError`는 모든 에러를 지우고 사용자를 리디렉션 할 수 있다.
+
+### NuxtErrorBoundary
+`NuxtErrorBoundary`는 Nuxt에서 제공하는 컴포넌트로, 컴포넌트는 기본 슬롯에서 발생한 클라이언트 측 오류를 처리한다.  
+이벤트 및 슬롯 이름은 모두 `error`이다.
+> https://nuxt.com/docs/api/components/nuxt-error-boundary

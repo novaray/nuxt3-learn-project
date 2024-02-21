@@ -3,22 +3,35 @@ const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = useCourse(courseSlug);
 
-if (!course) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Course not found.',
-    fatal: true
-  });
-}
+// if (!course) {
+//   throw createError({
+//     statusCode: 404,
+//     statusMessage: 'Course not found.'
+//     // fatal: true
+//   });
+// }
 
 console.log('[courseSlug].vue 컴포넌트 setup hooks');
 // const title = ref('');
 definePageMeta({
   key: (route) => route.fullPath,
   title: 'My home page',
-  keepalive: true,
-  alias: ['/lecture/:courseSlug']
+  // keepalive: true,
+  alias: ['/lecture/:courseSlug'],
   // layout: 'same-layout'
+  validate: (route) => {
+    const courseSlug = route.params.courseSlug as string;
+    const { course } = useCourse(courseSlug);
+    if (!course) {
+      // return false;
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Course not found.'
+      });
+    }
+
+    return true;
+  }
 });
 
 const memo = ref('');
@@ -29,8 +42,10 @@ const movePage = async (path: string) => {
 };
 
 const toggleComplete = () => {
-  completed.value = !completed.value;
   // $fetch('/api/error');
+  // showError('에러가 발생했습니다.');
+  completed.value = !completed.value;
+  throw createError('에러가 발생했습니다.');
 };
 </script>
 
