@@ -7,8 +7,8 @@ console.log('index.vue', process.server);
 <template>
   <q-page padding>
     <div class="q-my-xl text-center">
-      <div class="text-h4">All Courses</div>
-      <p class="q-mt-5m text-grey-8">웹 개발 입문부터 실전까지 학습.</p>
+      <PageTitle title="All Courses" />
+      <PageDescription description="웹 개발 입문부터 실전까지 학습." />
     </div>
     <div class="row q-col-gutter-lg">
       <div
