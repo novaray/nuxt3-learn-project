@@ -4,6 +4,8 @@ const emit = defineEmits<{
 }>();
 // const emit = defineEmits(['success']);
 
+const { signIn } = useAuth();
+
 const form = ref({
   email: '',
   password: ''
@@ -17,6 +19,7 @@ const handleLoginSubmit = () => {
     loading.value = true;
 
     // login business logic
+    signIn(form.value.email, form.value.password);
 
     emit('success');
   } catch (err: unknown) {
@@ -26,9 +29,7 @@ const handleLoginSubmit = () => {
       throw Error;
     }
   } finally {
-    setTimeout(() => {
-      loading.value = false;
-    }, 1500);
+    loading.value = false;
   }
 };
 </script>
@@ -50,6 +51,13 @@ const handleLoginSubmit = () => {
       type="password"
       label="password"
     />
+
+    <div
+      v-if="error"
+      class="text-red text-center"
+    >
+      {{ error.message }}
+    </div>
 
     <div class="q-mt-lg">
       <q-btn
