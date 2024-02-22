@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  middleware: ['guest-only']
+});
+
 const handleLoginSuccess = () => {
   const { isAdmin } = useAuthUser();
   const redirect = isAdmin.value ? '/admin' : '/';
