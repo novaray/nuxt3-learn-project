@@ -14,8 +14,10 @@
     "lint-prettier": "prettier --write \"**/*.(ts|tsx|vue|js|json)\""
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
     "@quasar/extras": "^1.16.9",
     "nuxt": "^3.10.1",
+    "pinia": "^2.1.7",
     "quasar": "^2.14.3",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
