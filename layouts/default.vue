@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const { authUser, isAuthenticated } = useAuthUser();
 const { signOut } = useAuth();
+const authUser = useAuthUser();
+const isAuthenticated = useAuthenticated();
 const pageContainerStyle = computed(() => ({
   maxWidth: '1080px',
   margin: '0 auto'
@@ -27,9 +28,7 @@ const languages = ref<Language[]>([
 
 const { locale } = useI18n();
 
-const getSelectedLanguageName = computed(
-  () => languages.value.find((lang) => lang.code === locale.value)?.name
-);
+const getSelectedLanguageName = computed(() => languages.value.find((lang) => lang.code === locale.value)?.name);
 </script>
 
 <template>

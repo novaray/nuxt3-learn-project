@@ -171,3 +171,15 @@ Nuxt3에서는 미들웨어를 사용하여 페이지 렌더링 전에 실행할
 페이지에서 정의된 미들웨어가 배열로 선언되어 있다면 인덱스 순으로 실행된다.
 
 > https://nuxt.com/docs/guide/directory-structure/middleware
+
+### composables directory auto-import 전략
+`composables` 디렉토리에 중첩으로 되어있으면 중첩으로 되어있는 파일을 자동으로 import를 해주지 않는다.  
+Nuxt3 공식 문서에서는 모듈을 다시 export 하거나, `nuxt.config.ts`에 정의하도록 가이드 하고있다.  
+난 어떤 모듈을 export할 때 해당 디렉토리에서 `index.ts`파일을 만들어 export하는 걸 좋아하지만 공식 문서에서 추천하기를 다시 export하는 걸 추천한다.  
+그래서, `nuxt.config.ts`에 정의하기 보다는 다시 export하는 방식을 사용하고 있다.
+- composables/auth
+- composables/auth.ts <-- re-export
+
+> https://nuxt.com/docs/guide/directory-structure/composables#how-files-are-scanned
+
+
