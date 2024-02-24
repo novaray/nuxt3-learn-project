@@ -13,10 +13,15 @@ export interface Course {
   gymcodingUrl: string;
 }
 
-export interface CourseWithPath
-  extends Omit<Course, 'rating' | 'reviewsCount' | 'studentCount'> {
+export interface CourseWithPath extends Omit<Course, 'rating' | 'reviewsCount' | 'studentCount'> {
   rating: string;
   reviewsCount: string;
   studentCount: string;
   path: string;
+}
+
+export interface CourseReturn {
+  course: Maybe<CourseWithPath>;
+  prevCourse: Maybe<CourseWithPath>;
+  nextCourse: Maybe<CourseWithPath>;
 }
