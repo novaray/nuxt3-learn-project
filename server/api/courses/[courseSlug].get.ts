@@ -1,4 +1,4 @@
-import { getCourseDetails } from '~/server/model/course';
+import { getCourseDetails } from '~/server/models/course';
 
 export default defineEventHandler((event) => {
   const courseSlug = getRouterParam(event, 'courseSlug') as string;
