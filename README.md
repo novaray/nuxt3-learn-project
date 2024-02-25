@@ -182,4 +182,18 @@ Nuxt3 공식 문서에서는 모듈을 다시 export 하거나, `nuxt.config.ts`
 
 > https://nuxt.com/docs/guide/directory-structure/composables#how-files-are-scanned
 
+### Nuxt cookie값으로 인한 hydration 불일치
+현재 `/server/routes/auth/user.get.ts`파일에서 `user`에 대한 정보를 쿠키값으로부터 가져오고 있다.  
+SSR 특성상 서버에서 한 번, 클라이언트에서 한 번 렌더링이 이루어지는데 첫 번째 서버 사이드 렌더링에서는 쿠키값이 없기 때문에 `user`에대한 쿠키 정보가 없다.  
+왜냐하면, 쿠키는 브라우저 저장소이기 때문에 첫 번째로 일어나는 서버 사이드 렌더링에서는 쿠키값이 없다.
 
+그렇기에 예로 들면,  
+`user`정보가 없기에 `login` 버튼이 렌더링 된다면 클라이언트에서는 `user`정보가 있기에 `logout` 버튼이 렌더링 될 것이다.  
+그렇기 때문에 하이드레이션 불일치 문제가 발생한다.
+
+그래서 해결 방법으로는,  
+Nuxt3에서는 요청 헤더에 있는 정보를 서버에서도 가져올 수 있도록 `useRequestHeaders` 컴포저블 함수를 제공한다.  
+`useRequestHeaders` 함수를 통해서 서버에서도 쿠키를 가져올 수 있게 하여, 하이드레이션 불일치 문제를 해결할 수 있다.
+- `/stores/auth.ts/fetchUser`
+
+`<ClientOnly>` 컴포넌트만이 능사는 아니다.

@@ -13,13 +13,13 @@ const form = ref({
 const error = ref<Error | null>(null);
 const loading = ref(false);
 
-const handleLoginSubmit = () => {
+const handleLoginSubmit = async () => {
   try {
     error.value = null;
     loading.value = true;
 
     // login business logic
-    signIn(form.value.email, form.value.password);
+    await signIn(form.value.email, form.value.password);
 
     emit('success');
   } catch (err: unknown) {
