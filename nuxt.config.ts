@@ -39,5 +39,12 @@ export default defineNuxtConfig({
         }
       ]
     }
+  },
+  runtimeConfig: {
+    authCookieName: '__user',
+    jwtSecretKey: 'supersecretkey',
+    public: {
+      clientConfigValue: 'test'
+    }
   }
 });
