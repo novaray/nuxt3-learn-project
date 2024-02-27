@@ -21,7 +21,7 @@ console.log('about config: ', config.public.clientConfigValue);
         <RouterLink to="/">RouterLink Home</RouterLink>
         <RouterLink to="https://youtube.com/@gymcoding"> RouterLink Youtube </RouterLink>
         <br />
-        <NuxtLink to="/">NuxtLink Home</NuxtLink>
+        <NuxtLinkLocale to="/">NuxtLink Home</NuxtLinkLocale>
         <NuxtLink to="https://youtube.com/@gymcoding"> NuxtLink Youtube </NuxtLink>
 
         <div class="q-gutter-y-sm q-mt-md">

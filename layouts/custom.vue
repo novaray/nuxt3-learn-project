@@ -20,7 +20,7 @@ const pageContainerStyle = computed(() => ({
           dark
           vertical
         />
-        <NuxtLink
+        <NuxtLinkLocale
           v-slot="{ navigate }"
           custom
           to="/custom/dashboard"
@@ -32,12 +32,12 @@ const pageContainerStyle = computed(() => ({
             no-caps
             @click="navigate()"
           />
-        </NuxtLink>
+        </NuxtLinkLocale>
         <q-separator
           dark
           vertical
         />
-        <NuxtLink
+        <NuxtLinkLocale
           v-slot="{ navigate }"
           custom
           to="/custom/settings"
@@ -49,12 +49,12 @@ const pageContainerStyle = computed(() => ({
             no-caps
             @click="navigate()"
           />
-        </NuxtLink>
+        </NuxtLinkLocale>
         <q-separator
           dark
           vertical
         />
-        <NuxtLink
+        <NuxtLinkLocale
           v-slot="{ navigate }"
           custom
           to="/custom"
@@ -66,7 +66,7 @@ const pageContainerStyle = computed(() => ({
             no-caps
             @click="navigate()"
           />
-        </NuxtLink>
+        </NuxtLinkLocale>
       </q-toolbar>
     </q-header>
     <q-page-container :style="pageContainerStyle">

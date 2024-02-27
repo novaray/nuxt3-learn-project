@@ -16,7 +16,7 @@ console.log('index.vue', process.server);
         :key="courseSlug"
         class="col-12 col-md-4 col-sm-6"
       >
-        <NuxtLink
+        <NuxtLinkLocale
           v-slot="{ navigate }"
           custom
           :to="path"
@@ -27,7 +27,7 @@ console.log('index.vue', process.server);
             :subtitle="subtitle"
             @click="navigate"
           />
-        </NuxtLink>
+        </NuxtLinkLocale>
       </div>
     </div>
   </q-page>

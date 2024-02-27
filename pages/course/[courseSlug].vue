@@ -49,8 +49,9 @@ definePageMeta({
 const memo = ref('');
 const completed = ref(false);
 
+const localePath = useLocalePath();
 const movePage = async (path: string) => {
-  await navigateTo(path);
+  await navigateTo(localePath(path));
 };
 
 const toggleComplete = () => {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { courses } = await useCourses();
+const localePath = useLocalePath();
 </script>
 
 <template>
@@ -17,14 +18,14 @@ const { courses } = await useCourses();
               :key="course.courseSlug"
               v-ripple
               clickable
-              :to="course.path"
+              :to="localePath(course.path)"
             >
               <q-item-section> {{ index + 1 }}. {{ course.title }} </q-item-section>
             </q-item>
             <q-item
               v-ripple
               clickable
-              to="/course/empty"
+              :to="localePath('/course/empty')"
             >
               <q-item-section>Empty Course (throw error)</q-item-section>
             </q-item>

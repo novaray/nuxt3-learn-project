@@ -21,7 +21,7 @@ const pageContainerStyle = computed(() => ({
             dark
             vertical
           />
-          <NuxtLink
+          <NuxtLinkLocale
             v-slot="{ navigate }"
             custom
             to="/admin/override-layout"
@@ -33,12 +33,12 @@ const pageContainerStyle = computed(() => ({
               no-caps
               @click="navigate()"
             />
-          </NuxtLink>
+          </NuxtLinkLocale>
           <q-separator
             dark
             vertical
           />
-          <NuxtLink
+          <NuxtLinkLocale
             v-slot="{ navigate }"
             custom
             to="/admin/dynamic-layout"
@@ -50,12 +50,12 @@ const pageContainerStyle = computed(() => ({
               no-caps
               @click="navigate()"
             />
-          </NuxtLink>
+          </NuxtLinkLocale>
           <q-separator
             dark
             vertical
           />
-          <NuxtLink
+          <NuxtLinkLocale
             v-slot="{ navigate }"
             custom
             to="/"
@@ -67,7 +67,7 @@ const pageContainerStyle = computed(() => ({
               no-caps
               @click="navigate()"
             />
-          </NuxtLink>
+          </NuxtLinkLocale>
         </q-toolbar>
       </q-header>
     </slot>

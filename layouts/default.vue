@@ -16,9 +16,11 @@ const moveYoutube = async () => {
   });
 };
 
-// const { locale } = useI18n();
+const { locale } = useI18n();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
+
+const getSelectLocale = computed(() => (locale.value === 'en' ? 'English' : '한국어'));
 
 const appConfig = useAppConfig();
 console.log('appConfig: ', appConfig);
@@ -35,7 +37,7 @@ console.log('appConfig: ', appConfig);
     >
       <q-toolbar>
         <q-toolbar-title>{{ appConfig.title }}</q-toolbar-title>
-        <NuxtLink
+        <NuxtLinkLocale
           v-slot="{ navigate }"
           custom
           to="/"
@@ -47,12 +49,12 @@ console.log('appConfig: ', appConfig);
             :label="$t('home')"
             @click="navigate"
           />
-        </NuxtLink>
+        </NuxtLinkLocale>
         <q-separator
           dark
           vertical
         />
-        <NuxtLink
+        <NuxtLinkLocale
           v-slot="{ navigate }"
           custom
           to="/about"
@@ -64,7 +66,7 @@ console.log('appConfig: ', appConfig);
             :label="$t('about')"
             @click="navigate"
           />
-        </NuxtLink>
+        </NuxtLinkLocale>
         <q-separator
           dark
           vertical
@@ -82,7 +84,7 @@ console.log('appConfig: ', appConfig);
           vertical
         />
 
-        <NuxtLink
+        <NuxtLinkLocale
           v-slot="{ navigate }"
           custom
           to="/admin"
@@ -94,7 +96,7 @@ console.log('appConfig: ', appConfig);
             :label="$t('admin')"
             @click="navigate"
           />
-        </NuxtLink>
+        </NuxtLinkLocale>
         <q-separator
           dark
           vertical
@@ -103,7 +105,7 @@ console.log('appConfig: ', appConfig);
           stretch
           flat
           no-caps
-          label="English"
+          :label="getSelectLocale"
         >
           <q-list
             padding
@@ -134,7 +136,7 @@ console.log('appConfig: ', appConfig);
           vertical
         />
         <!--<ClientOnly>-->
-        <NuxtLink
+        <NuxtLinkLocale
           v-if="!isAuthenticated"
           v-slot="{ navigate }"
           custom
@@ -147,7 +149,7 @@ console.log('appConfig: ', appConfig);
             no-caps
             @click="navigate()"
           />
-        </NuxtLink>
+        </NuxtLinkLocale>
         <q-btn
           v-else
           stretch
