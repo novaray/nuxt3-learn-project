@@ -19,6 +19,9 @@ const moveYoutube = async () => {
 // const { locale } = useI18n();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
+
+const appConfig = useAppConfig();
+console.log('appConfig: ', appConfig);
 </script>
 
 <template>
@@ -31,7 +34,7 @@ const switchLocalePath = useSwitchLocalePath();
       class="bg-dark text-white"
     >
       <q-toolbar>
-        <q-toolbar-title>Vue & Nuxt Mastery Course</q-toolbar-title>
+        <q-toolbar-title>{{ appConfig.title }}</q-toolbar-title>
         <NuxtLink
           v-slot="{ navigate }"
           custom
