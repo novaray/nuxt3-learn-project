@@ -16,7 +16,9 @@ const moveYoutube = async () => {
   });
 };
 
-const $t = (str: string) => str;
+// const { locale } = useI18n();
+const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
 </script>
 
 <template>
@@ -107,6 +109,7 @@ const $t = (str: string) => str;
             <q-item
               v-close-popup
               clickable
+              :to="localePath('/', 'en')"
             >
               <q-item-section>
                 <q-item-label>English</q-item-label>
@@ -115,6 +118,7 @@ const $t = (str: string) => str;
             <q-item
               v-close-popup
               clickable
+              :to="switchLocalePath('ko')"
             >
               <q-item-section>
                 <q-item-label>한국어</q-item-label>
