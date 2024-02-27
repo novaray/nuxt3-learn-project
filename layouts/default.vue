@@ -16,21 +16,7 @@ const moveYoutube = async () => {
   });
 };
 
-interface Language {
-  name: string;
-  code: 'en' | 'ko';
-}
-
-const languages = ref<Language[]>([
-  { name: 'English', code: 'en' },
-  { name: '한국어', code: 'ko' }
-]);
-
-const { locale } = useI18n();
-
-const getSelectedLanguageName = computed(() => languages.value.find((lang) => lang.code === locale.value)?.name);
-
-watch(locale, (value) => (useCookie('locale').value = value));
+const $t = (str: string) => str;
 </script>
 
 <template>
@@ -112,22 +98,26 @@ watch(locale, (value) => (useCookie('locale').value = value));
           stretch
           flat
           no-caps
-          :label="getSelectedLanguageName"
+          label="English"
         >
           <q-list
             padding
             dense
           >
             <q-item
-              v-for="{ code, name } in languages"
-              :key="code"
               v-close-popup
               clickable
-              :active="$i18n.locale === code"
-              @click="$i18n.locale = code"
             >
               <q-item-section>
-                <q-item-label>{{ name }}</q-item-label>
+                <q-item-label>English</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item
+              v-close-popup
+              clickable
+            >
+              <q-item-section>
+                <q-item-label>한국어</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>

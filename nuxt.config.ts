@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['nuxt-quasar-ui', '@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt'],
+  modules: ['nuxt-quasar-ui', '@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt', '@nuxtjs/i18n'],
   quasar: {
     plugins: ['Notify'],
     config: {
@@ -11,12 +11,12 @@ export default defineNuxtConfig({
     }
   },
   imports: {
-    presets: [
-      {
-        from: 'vue-i18n',
-        imports: ['useI18n']
-      }
-    ]
+    // presets: [
+    //   {
+    //     from: 'vue-i18n',
+    //     imports: ['useI18n']
+    //   }
+    // ]
   },
   ssr: true, // default
   app: {
