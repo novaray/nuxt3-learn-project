@@ -3,6 +3,14 @@ const route = useRoute();
 const courseSlug = route.params.courseSlug as string;
 const { course, prevCourse, nextCourse } = await useCourse(courseSlug);
 
+// const getTitle = computed(() => course?.title);
+// const getDescription = computed(() => course?.content);
+
+useSeoMeta({
+  title: () => course?.title || '',
+  description: () => course?.content
+});
+
 // if (!course) {
 //   throw createError({
 //     statusCode: 404,
@@ -55,6 +63,13 @@ const toggleComplete = () => {
 
 <template>
   <div>
+    <!--<Head>-->
+    <!--  <Title>{{ getTitle }}</Title>-->
+    <!--  <Meta-->
+    <!--    name="description"-->
+    <!--    :content="getDescription"-->
+    <!--  />-->
+    <!--</Head>-->
     <AppCard>
       <template #header>
         <div class="text-h5 text-weight-medium">{{ course?.title }}</div>
