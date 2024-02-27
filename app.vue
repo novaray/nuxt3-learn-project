@@ -1,14 +1,14 @@
 <script setup lang="ts">
-const nuxtApp = useNuxtApp();
-console.log(nuxtApp);
-
-// vue application instance
-// nuxtApp.vueApp.component();
-// nuxtApp.vueApp.directive();
-// nuxtApp.vueApp.use();
-
-// provide 활용
-// nuxtApp.provide('hello', (msg: string) => `Hello, ${msg}`);
+const title = ref('Nuxt Study Project');
+const description = ref('Nuxt.js study project by gymcoding(inflearn)');
+useSeoMeta({
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogType: 'website',
+  ogImage: '/img/og-image.png'
+});
 </script>
 
 <template>
