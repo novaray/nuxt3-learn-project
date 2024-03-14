@@ -8,6 +8,29 @@ README 파일에는 진행하다가 막힌 것을 기록한고, 추가적으로 
 애초에 ESLint, Prettier를 세팅을 하지 않다가(WebStorm을 쓰면 굳이 안 해도 프로젝트에서 세팅이 가능하기에), 오랜만에 다시 설정을 해보았다.  
 여전히 설정하기가 까다로웠다.
 
+```shell
+npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue eslint-plugin-nuxt @typescript-eslint/eslint-plugin @typescript-eslint/parser @nuxtjs/eslint-config-typescript
+```
+
+## quasar Module 설치
+1. `nuxt-quasar-ui` 설치
+
+```shell
+npm install quasar @quasar/extras
+npm install --save-dev nuxt-quasar-ui
+```
+
+2. `nuxt.config.js` 설정
+
+```typescript
+export default defineNuxtConfig({
+  modules: [
+    'nuxt-quasar-ui' // <-- 추가
+  ],
+  quasar: { /* */ }
+})
+````
+
 ### prettier 설정 관련 막힘.
 학습 교안을 보면서, 강의하시느 분은 따로 prettier 설정 파일을 만들어서 진행하지 않고, eslint 설정파일에만 prettier 설정을 넣어서 진행하셨다.  
 근데, 내가 했을 땐 Webstorm이라 그런지는 모르겠지만 prettier 설정을 따로 해주지 않으면, prettier가 동작을 하지 않았다.
